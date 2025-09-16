@@ -32,7 +32,7 @@ export const createProduct = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
     const { id } = req.params
-    const product = id.body
+    const product = req.body
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ success: false, message: "Product not found" })
