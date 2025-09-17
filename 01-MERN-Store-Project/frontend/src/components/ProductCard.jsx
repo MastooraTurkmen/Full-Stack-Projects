@@ -24,7 +24,8 @@ import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import useProductStore from "../store/product";
 
 const ProductCard = ({ product }) => {
-  const [updatedProduct, setUpdatedProduct] = React.useState(product);
+  const [updatedProduct, setUpdatedProduct] = useState(product);
+
   const textColor = useColorModeValue("gray.600", "gray.200");
   const bg = useColorModeValue("white", "gray.800");
 
@@ -39,16 +40,16 @@ const ProductCard = ({ product }) => {
         title: "Error",
         description: message,
         status: "error",
-        isClosable: true,
         duration: 3000,
+        isClosable: true,
       });
     } else {
       toast({
         title: "Success",
-        description: "Product deleted successfully",
+        description: message,
         status: "success",
-        isClosable: true,
         duration: 3000,
+        isClosable: true,
       });
     }
   };
@@ -61,16 +62,16 @@ const ProductCard = ({ product }) => {
         title: "Error",
         description: message,
         status: "error",
-        isClosable: true,
         duration: 3000,
+        isClosable: true,
       });
     } else {
       toast({
         title: "Success",
         description: "Product updated successfully",
         status: "success",
-        isClosable: true,
         duration: 3000,
+        isClosable: true,
       });
     }
   };
@@ -79,10 +80,10 @@ const ProductCard = ({ product }) => {
     <Box
       shadow="lg"
       rounded="lg"
-      overflow={"hidden"}
-      transition={"all 0.3s"}
-      bg={bg}
+      overflow="hidden"
+      transition="all 0.3s"
       _hover={{ transform: "translateY(-5px)", shadow: "xl" }}
+      bg={bg}
     >
       <Image
         src={product.image}
@@ -91,13 +92,16 @@ const ProductCard = ({ product }) => {
         w="full"
         objectFit="cover"
       />
+
       <Box p={4}>
         <Heading as="h3" size="md" mb={2}>
           {product.name}
         </Heading>
+
         <Text fontWeight="bold" fontSize="xl" color={textColor} mb={4}>
           ${product.price}
         </Text>
+
         <HStack spacing={2}>
           <IconButton icon={<EditIcon />} onClick={onOpen} colorScheme="blue" />
           <IconButton
@@ -107,26 +111,28 @@ const ProductCard = ({ product }) => {
           />
         </HStack>
       </Box>
+
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
+
         <ModalContent>
           <ModalHeader>Update Product</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <VStack spacing={4}>
               <Input
-                value={updatedProduct.name}
                 placeholder="Product Name"
                 name="name"
+                value={updatedProduct.name}
                 onChange={(e) =>
                   setUpdatedProduct({ ...updatedProduct, name: e.target.value })
                 }
               />
               <Input
-                value={updatedProduct.price}
                 placeholder="Price"
                 name="price"
                 type="number"
+                value={updatedProduct.price}
                 onChange={(e) =>
                   setUpdatedProduct({
                     ...updatedProduct,
@@ -135,9 +141,9 @@ const ProductCard = ({ product }) => {
                 }
               />
               <Input
-                value={updatedProduct.image}
                 placeholder="Image URL"
                 name="image"
+                value={updatedProduct.image}
                 onChange={(e) =>
                   setUpdatedProduct({
                     ...updatedProduct,
@@ -147,6 +153,7 @@ const ProductCard = ({ product }) => {
               />
             </VStack>
           </ModalBody>
+
           <ModalFooter>
             <Button
               colorScheme="blue"
