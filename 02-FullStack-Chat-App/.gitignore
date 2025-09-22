@@ -11,7 +11,25 @@ node_modules
 dist
 dist-ssr
 *.local
-
+env
+.env
+.env.*.local
+.env.test
+.env.production
+.env.production.local
+.cache
+.next
+build
+out
+.nuxt
+.astro
+public/build
+public/dist
+coverage
+*.lcov
+*.seed
+*.pid
+*.pid.lock
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
