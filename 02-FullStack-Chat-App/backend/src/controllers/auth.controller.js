@@ -1,5 +1,6 @@
 export const signup = (req, res) => {
-    res.send('Signup route')
+    const { username, password } = req.body
+    res.send(`signup route: ${username}, ${password}`)
 }
 
 export const login = (req, res) => {
