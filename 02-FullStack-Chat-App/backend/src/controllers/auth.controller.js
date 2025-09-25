@@ -4,7 +4,8 @@ export const signup = (req, res) => {
 }
 
 export const login = (req, res) => {
-    res.send('login route')
+    const { username, password } = req.body
+    res.send(`login route: ${username}, ${password}`)
 }
 
 export const logout = (req, res) => {
